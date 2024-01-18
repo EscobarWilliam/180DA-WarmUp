@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 # Define the HSV threshold range for blue color
-H_LOW, S_LOW, V_LOW = 90, 90, 120
+H_LOW, S_LOW, V_LOW = 90, 60, 115
 H_HIGH, S_HIGH, V_HIGH = 120, 200, 200
 
 # Open the camera
@@ -18,7 +18,8 @@ while True:
     # Get the HSV values of a specific pixel (e.g., center of the frame)
     pixel_hsv = hsv[frame.shape[0] // 2, frame.shape[1] // 2]
 
-    # Print the HSV values
+    # Print the HSV values. This allows the program to output live readings of HSV values
+    # which are helpful when needing to tune the range we are considering 
     print("HSV Values:", pixel_hsv)
 
     # Define the color range for blue
