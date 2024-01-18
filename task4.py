@@ -2,8 +2,8 @@ import cv2
 import numpy as np
 
 # Define the HSV threshold range for blue color
-H_LOW, S_LOW, V_LOW = 100, 100, 100
-H_HIGH, S_HIGH, V_HIGH = 130, 255, 255
+H_LOW, S_LOW, V_LOW = 90, 90, 120
+H_HIGH, S_HIGH, V_HIGH = 120, 200, 200
 
 # Open the camera
 cap = cv2.VideoCapture(0)
@@ -14,6 +14,12 @@ while True:
 
     # Convert the frame from BGR to HSV
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+    
+    # Get the HSV values of a specific pixel (e.g., center of the frame)
+    pixel_hsv = hsv[frame.shape[0] // 2, frame.shape[1] // 2]
+
+    # Print the HSV values
+    print("HSV Values:", pixel_hsv)
 
     # Define the color range for blue
     lower_color = np.array([H_LOW, S_LOW, V_LOW])
@@ -32,6 +38,9 @@ while True:
 
     # Display the frame with bounding boxes
     cv2.imshow('Blue Object Tracking', frame)
+
+    # Save the frame as a screenshot
+    cv2.imwrite('screenshot.png', frame)
 
     # Break the loop when 'q' is pressed
     if cv2.waitKey(1) & 0xFF == ord('q'):
