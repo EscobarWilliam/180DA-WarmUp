@@ -25,9 +25,18 @@ def getUserChoice():
         else:
             print("Invalid input. Please enter R, P, or S.")
 
+def on_message(client, userdata, msg):
+    result = msg.payload.decode("utf-8")
+
+    if result  ==  "Tie":
+        print("Its a tie!!")
+    else: 
+        print(result + " Wins!!!")
+    
 ################################################
 client = mqtt.Client()
 client.on_connect = on_connect
+client.on_message = on_message
 
 # Connect to the MQTT broker asynchronously
 client.connect_async('mqtt.eclipseprojects.io')
