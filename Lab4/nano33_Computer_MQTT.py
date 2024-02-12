@@ -31,7 +31,25 @@ def on_message(client, userdata, message):
             "GYR_Y": data["GYR_Y"],
             "GYR_Z": data["GYR_Z"]
         }
-        print("Data stored:", imu_data)
+
+        # Print ACC data
+        acc_data_str = "ACC Data: {:.6f}, {:.6f}, {:.6f}".format(imu_data["ACC_X"], imu_data["ACC_Y"], imu_data["ACC_Z"])
+        print(acc_data_str)
+
+        # Print a separator line
+        print("-" * 30)
+
+        # Print GYR data
+        gyr_data_str = "GYR Data: {:.6f}, {:.6f}, {:.6f}".format(imu_data["GYR_X"], imu_data["GYR_Y"], imu_data["GYR_Z"])
+        print(gyr_data_str)
+
+        # Print a separator line
+        print("-" * 30)
+
+        # Print Direction labels
+        direction_labels = "Direction:   X       Y       Z"
+        print(direction_labels)
+
     except Exception as e: 
         print("Error processing message:", e)
 
